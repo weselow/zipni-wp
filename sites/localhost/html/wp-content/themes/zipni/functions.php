@@ -66,3 +66,6 @@ function zipni_complianz_ru( $translation, $text, $domain ) {
 	return $map[ $text ] ?? $translation;
 }
 add_filter( 'gettext', 'zipni_complianz_ru', 10, 3 );
+
+/* Cookie banner force-show filter lives in mu-plugins/zipni-complianz-banner.php
+ * (must load before Complianz constructor). */
