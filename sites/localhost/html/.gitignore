@@ -1,5 +1,6 @@
 *
 !.gitignore
+!.htaccess
 !wp-content/
 !wp-content/themes/
 !wp-content/themes/zipni/

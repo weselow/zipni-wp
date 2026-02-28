@@ -128,6 +128,12 @@ docker exec $CONTAINER /usr/local/lsws/bin/lswsctrl restart
 
 # 10. Настройки WordPress
 docker exec $CONTAINER bash -c 'cd /var/www/vhosts/localhost/html && wp rewrite structure "/%postname%/" --allow-root && wp option update timezone_string Europe/Moscow --allow-root'
+
+# 11. .htaccess (WordPress не записывает автоматически, нужно вручную)
+echo "IyBCRUdJTiBXb3JkUHJlc3MKUmV3cml0ZUVuZ2luZSBPbgpSZXdyaXRlUnVsZSAuKiAtIFtFPUhUVFBfQVVUSE9SSVpBVElPTjole0hUVFA6QXV0aG9yaXphdGlvbn1dClJld3JpdGVCYXNlIC8KUmV3cml0ZVJ1bGUgXmluZGV4XC5waHAkIC0gW0xdClJld3JpdGVDb25kICV7UkVRVUVTVF9GSUxFTkFNRX0gIS1mClJld3JpdGVDb25kICV7UkVRVUVTVF9GSUxFTkFNRX0gIS1kClJld3JpdGVSdWxlIC4gL2luZGV4LnBocCBbTF0KIyBFTkQgV29yZFByZXNzCg==" | docker exec -i $CONTAINER bash -c "base64 -d > /var/www/vhosts/localhost/html/.htaccess"
+
+# 12. Перезапустить OLS для подхвата rewrite
+docker exec $CONTAINER /usr/local/lsws/bin/lswsctrl restart
 ```
 
 ### 7. DB_HOST — использовать имя сервиса, не контейнера
@@ -148,6 +154,33 @@ wp config create --dbhost=mysql-kg4808wk8g4s08scwgkcosgw-120216886452 ...
 ```bash
 docker exec $CONTAINER sed -i "s/define( 'DB_HOST', '.*' );/define( 'DB_HOST', 'mysql' );/" /var/www/vhosts/localhost/html/wp-config.php
 ```
+
+### 8. .htaccess пустой — Pretty Permalinks не работают
+
+**Проблема:** После `wp rewrite structure "/%postname%/"` WordPress НЕ записывает правила в `.htaccess` (файл остаётся пустым с комментарием `# .htaccess`). Запросы на pretty URL'ы (`/hello-world/`) возвращают 404 от LiteSpeed.
+
+**Причина:** WordPress не может записать файл (права) или `wp rewrite flush` обновляет только БД, не файл.
+
+**Решение:** Записать .htaccess вручную. ВАЖНО: `<IfModule mod_rewrite.c>` обёртку можно оставить, но OLS корректно обрабатывает и без неё:
+```
+# BEGIN WordPress
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+# END WordPress
+```
+
+Также добавлены inline rewrite rules в `vhconf.conf` как fallback. После правки — `lswsctrl restart`.
+
+### 9. Bash escaping при записи .htaccess через SSH
+
+**Проблема:** `!-f` и `!-d` в RewriteCond через цепочку `ssh → docker exec → bash` экранируются в `\!-f`, что ломает правила.
+
+**Решение:** Использовать base64: закодировать файл локально, передать через pipe `base64 -d > .htaccess`.
 
 ## Persistence
 

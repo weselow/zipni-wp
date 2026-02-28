@@ -1,2 +1,6 @@
 *
 !.gitignore
+!conf/
+!conf/vhosts/
+!conf/vhosts/localhost/
+!conf/vhosts/localhost/vhconf.conf
