@@ -42,3 +42,27 @@ add_action( 'init', 'zipni_register_pattern_categories' );
 
 /* Carousel shortcode moved to zipni-portfolio plugin (v1.1.0).
  * Now dynamic: queries portfolio CPT, falls back to hardcoded images. */
+
+/**
+ * Translate Complianz GDPR strings to Russian.
+ *
+ * Plugin ships without ru_RU .mo file; override key UI strings via gettext.
+ */
+function zipni_complianz_ru( $translation, $text, $domain ) {
+	if ( 'complianz-gdpr' !== $domain ) {
+		return $translation;
+	}
+	static $map = array(
+		'Always active'    => 'Всегда активны',
+		'Functional'       => 'Необходимые',
+		'Statistics'       => 'Статистика',
+		'Preferences'      => 'Предпочтения',
+		'Marketing'        => 'Маркетинг',
+		'Accept'           => 'Принять',
+		'Deny'             => 'Отклонить',
+		'Save preferences' => 'Сохранить настройки',
+		'Close'            => 'Закрыть',
+	);
+	return $map[ $text ] ?? $translation;
+}
+add_filter( 'gettext', 'zipni_complianz_ru', 10, 3 );
