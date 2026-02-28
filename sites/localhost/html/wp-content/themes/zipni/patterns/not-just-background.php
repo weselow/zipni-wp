@@ -34,9 +34,9 @@
 <!-- /wp:group -->
 <!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}},"border":{"radius":"0.75rem"},"dimensions":{"minHeight":"240px"}},"backgroundColor":"surface-alt","layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
 <div class="wp-block-group has-surface-alt-background-color has-background" style="min-height:240px;border-radius:0.75rem;margin-top:var(--wp--preset--spacing--30)">
-<!-- wp:paragraph {"align":"center","textColor":"text-secondary","style":{"typography":{"fontSize":"3rem"}}} -->
-<p class="has-text-align-center has-text-secondary-color has-text-color" style="font-size:3rem">🎨</p>
-<!-- /wp:paragraph -->
+<!-- wp:html -->
+<div style="width:48px;height:48px;border-radius:0.75rem;background:var(--wp--preset--color--surface);display:flex;align-items:center;justify-content:center;margin:0 auto var(--wp--preset--spacing--20)"><svg width="24" height="24" fill="none" stroke="var(--wp--preset--color--text-secondary)" viewBox="0 0 24 24" style="opacity:0.4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
+<!-- /wp:html -->
 <!-- wp:paragraph {"align":"center","textColor":"text-secondary","fontSize":"xs"} -->
 <p class="has-text-align-center has-text-secondary-color has-text-color has-xs-font-size">Цветной градиент вместо фона</p>
 <!-- /wp:paragraph -->

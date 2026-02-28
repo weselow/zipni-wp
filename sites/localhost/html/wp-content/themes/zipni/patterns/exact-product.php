@@ -26,9 +26,9 @@
 
 <!-- wp:column {"style":{"border":{"radius":"1rem"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"surface"} -->
 <div class="wp-block-column has-surface-background-color has-background" style="border-radius:1rem;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
-<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.5rem"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<p style="font-size:1.5rem;margin-bottom:var(--wp--preset--spacing--20)">✅</p>
-<!-- /wp:paragraph -->
+<!-- wp:html -->
+<div style="width:48px;height:48px;border-radius:0.75rem;background:var(--wp--preset--color--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:var(--wp--preset--spacing--20)"><svg width="24" height="24" fill="none" stroke="var(--wp--preset--color--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+<!-- /wp:html -->
 <!-- wp:heading {"level":3,"fontSize":"lg"} --><h3 class="wp-block-heading has-lg-font-size">Этикетки и логотипы</h3><!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"text-secondary","fontSize":"sm"} -->
 <p class="has-text-secondary-color has-text-color has-sm-font-size">Читаемый текст, точные цвета</p>
@@ -38,9 +38,9 @@
 
 <!-- wp:column {"style":{"border":{"radius":"1rem"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"surface"} -->
 <div class="wp-block-column has-surface-background-color has-background" style="border-radius:1rem;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
-<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.5rem"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<p style="font-size:1.5rem;margin-bottom:var(--wp--preset--spacing--20)">✅</p>
-<!-- /wp:paragraph -->
+<!-- wp:html -->
+<div style="width:48px;height:48px;border-radius:0.75rem;background:var(--wp--preset--color--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:var(--wp--preset--spacing--20)"><svg width="24" height="24" fill="none" stroke="var(--wp--preset--color--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+<!-- /wp:html -->
 <!-- wp:heading {"level":3,"fontSize":"lg"} --><h3 class="wp-block-heading has-lg-font-size">Фурнитура и швы</h3><!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"text-secondary","fontSize":"sm"} -->
 <p class="has-text-secondary-color has-text-color has-sm-font-size">Каждая застёжка на месте</p>
@@ -50,9 +50,9 @@
 
 <!-- wp:column {"style":{"border":{"radius":"1rem"},"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"backgroundColor":"surface"} -->
 <div class="wp-block-column has-surface-background-color has-background" style="border-radius:1rem;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
-<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.5rem"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<p style="font-size:1.5rem;margin-bottom:var(--wp--preset--spacing--20)">✅</p>
-<!-- /wp:paragraph -->
+<!-- wp:html -->
+<div style="width:48px;height:48px;border-radius:0.75rem;background:var(--wp--preset--color--accent-light);display:flex;align-items:center;justify-content:center;margin-bottom:var(--wp--preset--spacing--20)"><svg width="24" height="24" fill="none" stroke="var(--wp--preset--color--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+<!-- /wp:html -->
 <!-- wp:heading {"level":3,"fontSize":"lg"} --><h3 class="wp-block-heading has-lg-font-size">Текстура материала</h3><!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"text-secondary","fontSize":"sm"} -->
 <p class="has-text-secondary-color has-text-color has-sm-font-size">Дерево, ткань, металл — как в жизни</p>
