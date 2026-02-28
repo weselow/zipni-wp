@@ -23,6 +23,15 @@ function zipni_enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'zipni_enqueue_styles' );
 
 /**
+ * SVG favicon (red square + white Z) from old landing.
+ * Overrides WP site icon with a sharper SVG version.
+ */
+function zipni_svg_favicon() {
+	echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( get_theme_file_uri( 'assets/favicon.svg' ) ) . '">' . "\n";
+}
+add_action( 'wp_head', 'zipni_svg_favicon', 1 );
+
+/**
  * Hide admin bar on mobile for CTA button visibility.
  */
 function zipni_hide_on_mobile_css() {
