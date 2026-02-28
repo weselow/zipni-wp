@@ -6,7 +6,7 @@
  * Keywords: pricing, tariffs, plans
  */
 ?>
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"1152px"}} -->
+<!-- wp:group {"anchor":"pricing","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"1152px"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)">
 
 <!-- wp:heading {"textAlign":"center","fontSize":"3xl"} -->
