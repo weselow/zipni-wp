@@ -88,12 +88,15 @@ add_action( 'init', 'zipni_portfolio_register_taxonomy_marketplace' );
  */
 function zipni_portfolio_register_meta() {
 	$fields = array(
-		'before_image_url'  => 'string',
-		'after_image_url'   => 'string',
-		'before_alt'        => 'string',
-		'after_alt'         => 'string',
-		'product_name'      => 'string',
-		'scene_description' => 'string',
+		'before_image_url'        => 'string',
+		'after_image_url'         => 'string',
+		'before_alt'              => 'string',
+		'after_alt'               => 'string',
+		'product_name'            => 'string',
+		'scene_description'       => 'string',
+		'rank_math_title'         => 'string',
+		'rank_math_description'   => 'string',
+		'rank_math_focus_keyword' => 'string',
 	);
 
 	foreach ( $fields as $key => $type ) {
