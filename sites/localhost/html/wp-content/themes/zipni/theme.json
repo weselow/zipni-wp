@@ -239,6 +239,16 @@
 			"name": "page-landing",
 			"title": "Landing Page",
 			"postTypes": ["page"]
+		},
+		{
+			"name": "single-portfolio",
+			"title": "Portfolio — карточка",
+			"postTypes": ["portfolio"]
+		},
+		{
+			"name": "archive-portfolio",
+			"title": "Portfolio — галерея",
+			"postTypes": ["portfolio"]
 		}
 	]
 }
