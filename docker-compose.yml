@@ -29,6 +29,11 @@ services:
     restart: always
     environment:
       TZ: ${TimeZone}
+    labels:
+      # Fix Traefik multi-port ambiguity: base image exposes 7080 (admin),
+      # we need Traefik to route to port 80 (web). Without this label
+      # Traefik can't determine the correct port → 504 Gateway Timeout.
+      - traefik.http.services.litespeed.loadbalancer.server.port=80
     networks:
       - default
   redis:
