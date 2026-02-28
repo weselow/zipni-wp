@@ -78,7 +78,7 @@ function zipni_portfolio_carousel_shortcode() {
 				<img id="zipni-after" src="<?php echo esc_url( $first['after'] ); ?>" alt="Товар в реальном интерьере" style="width:100%;border-radius:0.5rem;aspect-ratio:1/1;object-fit:cover">
 			</div>
 		</div>
-		<div class="zipni-carousel__thumbs" style="display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0;scrollbar-width:thin">
+		<div class="zipni-carousel__thumbs" style="display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0;scrollbar-width:thin;justify-content:center">
 			<?php foreach ( $items as $i => $item ) : ?>
 			<button
 				class="zipni-thumb<?php echo $i === 0 ? ' zipni-thumb--active' : ''; ?>"
