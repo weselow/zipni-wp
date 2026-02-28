@@ -1,2 +1,12 @@
 *
 !.gitignore
+!localhost/
+!localhost/html/
+!localhost/html/.gitignore
+!localhost/html/wp-content/
+!localhost/html/wp-content/themes/
+!localhost/html/wp-content/themes/zipni/
+!localhost/html/wp-content/themes/zipni/**
+!localhost/html/wp-content/plugins/
+!localhost/html/wp-content/plugins/zipni-portfolio/
+!localhost/html/wp-content/plugins/zipni-portfolio/**

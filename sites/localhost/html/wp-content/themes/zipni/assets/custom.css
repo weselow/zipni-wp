@@ -1,0 +1,36 @@
+/* Zipni custom styles — supplements theme.json */
+
+/* Smooth scroll for anchor links */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Sticky header backdrop */
+.site-header {
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+}
+
+/* Button transitions */
+.wp-element-button,
+.wp-block-button__link {
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Link transitions */
+a {
+	transition: color 0.2s ease;
+}
+
+/* Image border radius in cards */
+.wp-block-post-featured-image img {
+	border-radius: 0.5rem;
+}
+
+/* Navigation link hover */
+.wp-block-navigation-item__content:hover {
+	color: var(--wp--preset--color--text-primary);
+}
+
+/* Pricing column highlight badge placeholder */
+/* (for future Про plan badge via pattern) */

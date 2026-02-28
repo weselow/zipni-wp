@@ -1,2 +1,9 @@
 *
 !.gitignore
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/zipni/
+!wp-content/themes/zipni/**
+!wp-content/plugins/
+!wp-content/plugins/zipni-portfolio/
+!wp-content/plugins/zipni-portfolio/**
