@@ -130,6 +130,25 @@ docker exec $CONTAINER /usr/local/lsws/bin/lswsctrl restart
 docker exec $CONTAINER bash -c 'cd /var/www/vhosts/localhost/html && wp rewrite structure "/%postname%/" --allow-root && wp option update timezone_string Europe/Moscow --allow-root'
 ```
 
+### 7. DB_HOST — использовать имя сервиса, не контейнера
+
+**Проблема:** При создании `wp-config.php` через WP-CLI использовали `--dbhost=mysql-kg4808wk8g4s08scwgkcosgw-120216886452` (полное имя контейнера). После редеплоя контейнер получает новое имя с другим суффиксом → WordPress не может подключиться к БД.
+
+**Решение:** Использовать имя сервиса из `docker-compose.yml` — просто `mysql`. Docker Compose DNS резолвит его в IP текущего контейнера.
+
+```bash
+# Правильно:
+wp config create --dbhost=mysql ...
+
+# Неправильно:
+wp config create --dbhost=mysql-kg4808wk8g4s08scwgkcosgw-120216886452 ...
+```
+
+Если уже сломалось — исправить в wp-config.php:
+```bash
+docker exec $CONTAINER sed -i "s/define( 'DB_HOST', '.*' );/define( 'DB_HOST', 'mysql' );/" /var/www/vhosts/localhost/html/wp-config.php
+```
+
 ## Persistence
 
 - `/var/www/vhosts/` маппится в volume `./sites` → данные переживают рестарт контейнера
