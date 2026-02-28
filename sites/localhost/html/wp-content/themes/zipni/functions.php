@@ -78,3 +78,29 @@ add_filter( 'gettext', 'zipni_complianz_ru', 10, 3 );
 
 /* Cookie banner force-show filter lives in mu-plugins/zipni-complianz-banner.php
  * (must load before Complianz constructor). */
+
+/*--------------------------------------------------------------
+ * Security hardening
+ *--------------------------------------------------------------*/
+
+/** Disable XML-RPC (not used; autoposting uses REST API). */
+add_filter( 'xmlrpc_enabled', '__return_false' );
+
+/** Remove X-Pingback header. */
+function zipni_remove_x_pingback( $headers ) {
+	unset( $headers['X-Pingback'] );
+	return $headers;
+}
+add_filter( 'wp_headers', 'zipni_remove_x_pingback' );
+
+/** Hide WordPress version from HTML and feeds. */
+remove_action( 'wp_head', 'wp_generator' );
+
+/** Send security headers. */
+function zipni_security_headers() {
+	header( 'X-Content-Type-Options: nosniff' );
+	header( 'X-Frame-Options: SAMEORIGIN' );
+	header( 'Referrer-Policy: strict-origin-when-cross-origin' );
+	header( 'Permissions-Policy: camera=(), microphone=(), geolocation=()' );
+}
+add_action( 'send_headers', 'zipni_security_headers' );
