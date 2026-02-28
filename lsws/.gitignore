@@ -1,6 +1,12 @@
 *
 !.gitignore
 !conf/
+!conf/httpd_config.conf
+!conf/mime.properties
+!conf/templates/
+!conf/templates/docker.conf
+!conf/templates/ccl.conf
+!conf/templates/rails.conf
 !conf/vhosts/
 !conf/vhosts/localhost/
 !conf/vhosts/localhost/vhconf.conf
