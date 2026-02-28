@@ -16,7 +16,6 @@ services:
       - default
   litespeed:
     image: litespeedtech/openlitespeed:${OLS_VERSION}-${PHP_VERSION}
-    container_name: litespeed
     env_file:
       - .env
     volumes:
@@ -25,11 +24,8 @@ services:
       - ./bin/container:/usr/local/bin
       - ./sites:/var/www/vhosts/
       - ./logs:/usr/local/lsws/logs/
-    ports:
-      - 80:80
-      - 443:443
-      - 443:443/udp
-      - 7080:7080
+    expose:
+      - "80"
     restart: always
     environment:
       TZ: ${TimeZone}
