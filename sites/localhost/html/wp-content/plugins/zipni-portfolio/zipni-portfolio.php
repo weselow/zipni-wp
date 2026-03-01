@@ -171,20 +171,22 @@ function zipni_render_portfolio_single( $attributes, $content ) {
 	?>
 	<div class="zipni-ba-grid">
 		<?php if ( $before_url ) : ?>
-		<div class="zipni-ba-card">
+		<figure class="zipni-ba-card">
 			<span class="zipni-ba-label">До — белый фон</span>
 			<img src="<?php echo esc_url( $before_url ); ?>"
 			     alt="<?php echo $before_alt ?: 'Товар на белом фоне'; ?>"
 			     loading="lazy" width="600" height="600">
-		</div>
+			<figcaption><?php echo $before_alt ?: 'Товар на белом фоне'; ?></figcaption>
+		</figure>
 		<?php endif; ?>
 		<?php if ( $after_url ) : ?>
-		<div class="zipni-ba-card zipni-ba-card--after">
+		<figure class="zipni-ba-card zipni-ba-card--after">
 			<span class="zipni-ba-label">После — в интерьере</span>
 			<img src="<?php echo esc_url( $after_url ); ?>"
 			     alt="<?php echo $after_alt ?: 'Товар в интерьере'; ?>"
 			     loading="lazy" width="600" height="600">
-		</div>
+			<figcaption><?php echo $after_alt ?: 'Товар в интерьере'; ?></figcaption>
+		</figure>
 		<?php endif; ?>
 	</div>
 
@@ -220,6 +222,30 @@ function zipni_render_portfolio_single( $attributes, $content ) {
 		<?php echo $description; ?>
 	</div>
 	<?php endif; ?>
+
+	<?php
+	// Cross-links to SEO landings (distributes link juice)
+	$landings = array(
+		array( '/foto-kartochki-tovara/',   'Фото для карточки товара' ),
+		array( '/zamenit-fon-na-foto/',     'Заменить фон на фото товара' ),
+		array( '/udalit-fon/',              'Удалить фон с фото' ),
+		array( '/foto-dlya-marketplejsov/', 'Фото для маркетплейсов' ),
+		array( '/foto-dlya-ozon/',          'Фото для Ozon' ),
+		array( '/foto-dlya-wildberries/',   'Фото для Wildberries' ),
+	);
+	// Show 3 links, rotating by post_id to distribute evenly
+	$offset = $post_id % count( $landings );
+	$shown  = array();
+	for ( $i = 0; $i < 3; $i++ ) {
+		$shown[] = $landings[ ( $offset + $i ) % count( $landings ) ];
+	}
+	?>
+	<nav class="zipni-portfolio-crosslinks" aria-label="Смотрите также">
+		<span>Смотрите также:</span>
+		<?php foreach ( $shown as $link ) : ?>
+		<a href="<?php echo esc_url( home_url( $link[0] ) ); ?>"><?php echo esc_html( $link[1] ); ?></a>
+		<?php endforeach; ?>
+	</nav>
 
 	<div class="zipni-portfolio-cta">
 		<p>Хотите такое же фото для своего товара?</p>

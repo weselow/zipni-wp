@@ -15,6 +15,7 @@
 	border-radius: 1rem;
 	padding: 1.25rem;
 	text-align: center;
+	margin: 0;
 }
 
 .zipni-ba-card--after {
@@ -77,6 +78,44 @@
 	line-height: 1.7;
 	color: var(--wp--preset--color--text-primary, #1a1a1a);
 	margin-bottom: 2rem;
+}
+
+/* Single: figcaption */
+
+.zipni-ba-card figcaption {
+	font-size: var(--wp--preset--font-size--xs, 0.75rem);
+	color: var(--wp--preset--color--text-secondary, #666);
+	margin-top: 0.5rem;
+	line-height: 1.4;
+}
+
+/* Single: cross-links */
+
+.zipni-portfolio-crosslinks {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem 1rem;
+	margin-top: 2rem;
+	padding: 1rem 1.25rem;
+	background: var(--wp--preset--color--surface, #fff);
+	border: 1px solid var(--wp--preset--color--border, #eaeaea);
+	border-radius: 0.75rem;
+	font-size: var(--wp--preset--font-size--sm, 0.875rem);
+}
+
+.zipni-portfolio-crosslinks span {
+	font-weight: 600;
+	color: var(--wp--preset--color--text-secondary, #666);
+}
+
+.zipni-portfolio-crosslinks a {
+	color: var(--wp--preset--color--accent, #d63031);
+	text-decoration: none;
+}
+
+.zipni-portfolio-crosslinks a:hover {
+	text-decoration: underline;
 }
 
 /* Single: CTA */
