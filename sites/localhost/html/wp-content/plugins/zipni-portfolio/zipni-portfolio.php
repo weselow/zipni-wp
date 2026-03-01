@@ -505,3 +505,86 @@ function zipni_portfolio_deactivate() {
 	flush_rewrite_rules();
 }
 register_deactivation_hook( __FILE__, 'zipni_portfolio_deactivate' );
+
+
+/* ───────────────────────────────────────────────
+ * JSON-LD Structured Data via Rank Math filter
+ * ─────────────────────────────────────────────── */
+
+function zipni_portfolio_json_ld( $data, $jsonld ) {
+	if ( ! is_singular( 'portfolio' ) ) {
+		return $data;
+	}
+
+	$post_id      = get_the_ID();
+	$before_url   = get_post_meta( $post_id, 'before_image_url', true );
+	$after_url    = get_post_meta( $post_id, 'after_image_url', true );
+	$before_alt   = get_post_meta( $post_id, 'before_alt', true );
+	$after_alt    = get_post_meta( $post_id, 'after_alt', true );
+	$product_name = get_post_meta( $post_id, 'product_name', true );
+	$description  = get_post_meta( $post_id, 'scene_description', true );
+	$categories   = get_the_terms( $post_id, 'portfolio_category' );
+	$cat_name     = ( $categories && ! is_wp_error( $categories ) ) ? $categories[0]->name : '';
+
+	$schema = array(
+		'@type'         => 'CreativeWork',
+		'@id'           => get_permalink( $post_id ) . '#portfolio',
+		'name'          => get_the_title( $post_id ),
+		'description'   => $description ?: get_the_title( $post_id ),
+		'url'           => get_permalink( $post_id ),
+		'datePublished' => get_the_date( 'c', $post_id ),
+		'author'        => array(
+			'@type' => 'Organization',
+			'name'  => 'Zipni',
+			'url'   => home_url(),
+		),
+		'provider'      => array(
+			'@type' => 'Organization',
+			'name'  => 'Zipni',
+			'url'   => home_url(),
+		),
+	);
+
+	$images = array();
+
+	if ( $before_url ) {
+		$images[] = array(
+			'@type'       => 'ImageObject',
+			'url'         => $before_url,
+			'name'        => $before_alt ?: 'Товар на белом фоне',
+			'description' => $before_alt ?: 'Оригинальное фото товара на белом фоне',
+			'width'       => 1024,
+			'height'      => 1024,
+		);
+	}
+
+	if ( $after_url ) {
+		$images[] = array(
+			'@type'       => 'ImageObject',
+			'url'         => $after_url,
+			'name'        => $after_alt ?: 'Товар в интерьере',
+			'description' => $after_alt ?: 'AI-генерация: товар размещён в реалистичной сцене',
+			'width'       => 1024,
+			'height'      => 1024,
+		);
+	}
+
+	if ( ! empty( $images ) ) {
+		$schema['image'] = count( $images ) === 1 ? $images[0] : $images;
+	}
+
+	if ( $product_name || $cat_name ) {
+		$schema['about'] = array(
+			'@type' => 'Thing',
+			'name'  => $product_name ?: $cat_name,
+		);
+		if ( $cat_name ) {
+			$schema['about']['category'] = $cat_name;
+		}
+	}
+
+	$data['portfolio-schema'] = $schema;
+
+	return $data;
+}
+add_filter( 'rank_math/json_ld', 'zipni_portfolio_json_ld', 20, 2 );
